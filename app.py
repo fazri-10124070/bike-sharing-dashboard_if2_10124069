@@ -56,7 +56,7 @@ tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
 
 # ---------- TAB 1: CUACA ----------
 with tab1:
-    st.header("🌦️ Penyewaan Berdasarkan Cuaca")
+    st.header("Penyewaan Berdasarkan Cuaca")
     weather_labels = {1:"☀️ Cerah",2:"🌫️ Berkabut",3:"🌧️ Hujan Ringan",4:"⛈️ Cuaca Parah"}
     df_day_filtered["weather_label"] = df_day_filtered["weathersit"].map(weather_labels)
     weather_group = df_day_filtered.groupby("weather_label")["cnt"].mean().reset_index()
@@ -147,4 +147,5 @@ with tab7:
                        hover_data={'cnt':True,'dteday':True,'type':True})
     fig_pred.update_layout(title=f"Prediksi {future_days} Hari Kedepan", template="plotly_white")
     st.plotly_chart(fig_pred, use_container_width=True)
+
 
