@@ -129,7 +129,7 @@ with tab6:
 
 # ---------- TAB 7: PREDIKSI 30 HARI ----------
 with tab7:
-    st.header("🔮 Prediksi Penyewaan Harian (Linear Regression - 30 Hari)")
+    st.header("Prediksi Penyewaan Harian (30 Hari)")
     
     # Prediksi 30 hari ke depan
     future_days = 30
@@ -155,3 +155,4 @@ with tab7:
                        hover_data={'cnt':True,'dteday':True,'type':True})
     fig_pred.update_layout(title=f"Prediksi 30 Hari Kedepan", template="plotly_white")
     st.plotly_chart(fig_pred, use_container_width=True)
+
