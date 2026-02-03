@@ -12,7 +12,6 @@ st.markdown("""
 <style>
 body { background-color: #f4f6f8; }
 h1, h2, h3 { color: #1f2937; }
-.stMetric { background-color: #ffffff; padding:15px; border-radius:12px; border:1px solid #e5e7eb; }
 .block-container { padding-top:2rem; }
 </style>
 """, unsafe_allow_html=True)
@@ -68,17 +67,17 @@ if selected_cluster != "Semua":
 else:
     df_hour_cluster = df_hour_filtered.copy()
 
-# ---------- METRICS ----------
+# ---------- METRICS TANPA KOTAK PUTIH ----------
 st.subheader("📌 Ringkasan Penyewaan")
 m1, m2, m3 = st.columns(3)
 if len(df_day_filtered) > 0:
-    m1.metric("📦 Total Penyewaan", f"{int(df_day_filtered['cnt'].sum()):,}")
-    m2.metric("📈 Rata-rata Harian", f"{int(df_day_filtered['cnt'].mean()):,}")
-    m3.metric("🏆 Hari Teramai", df_day_filtered.loc[df_day_filtered['cnt'].idxmax(), 'dteday'].strftime('%d-%m-%Y'))
+    m1.write(f"📦 **Total Penyewaan:** {int(df_day_filtered['cnt'].sum()):,}")
+    m2.write(f"📈 **Rata-rata Harian:** {int(df_day_filtered['cnt'].mean()):,}")
+    m3.write(f"🏆 **Hari Teramai:** {df_day_filtered.loc[df_day_filtered['cnt'].idxmax(), 'dteday'].strftime('%d-%m-%Y')}")
 else:
-    m1.metric("📦 Total Penyewaan", "0")
-    m2.metric("📈 Rata-rata Harian", "0")
-    m3.metric("🏆 Hari Teramai", "-")
+    m1.write("📦 **Total Penyewaan:** 0")
+    m2.write("📈 **Rata-rata Harian:** 0")
+    m3.write("🏆 **Hari Teramai:** -")
 
 st.divider()
 
