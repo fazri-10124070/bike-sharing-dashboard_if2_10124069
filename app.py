@@ -17,8 +17,8 @@ h1, h2, h3 { color: #1f2937; }
 </style>
 """, unsafe_allow_html=True)
 
-st.title("🚲 Bike Sharing Dashboard")
-st.caption("Dashboard interaktif, prediksi fleksibel, insight langsung dari data")
+st.title("Bike Sharing Dashboard")
+st.caption("Dashboard interaktif untuk menganalisis pola penyewaan sepeda, tren harian, musiman, dan prediksi permintaan.")
 
 # ---------- LOAD DATA ----------
 df_day = pd.read_csv('day.csv')
@@ -27,31 +27,31 @@ df_day['dteday'] = pd.to_datetime(df_day['dteday'])
 df_hour['dteday'] = pd.to_datetime(df_hour['dteday'])
 
 # ---------- FILTER TAHUN ----------
-year_option = st.selectbox("📅 Pilih Tahun", [2011, 2012])
+year_option = st.selectbox("Pilih Tahun", [2011, 2012])
 df_day_filtered = df_day[df_day['yr'] == (year_option-2011)]
 df_hour_filtered = df_hour[df_hour['yr'] == (year_option-2011)]
 
 # ---------- RINGKASAN PENYEWAAN BESAR & ANGGKA BERWARNA ----------
-st.subheader("📌 Ringkasan Penyewaan")
+st.subheader("Ringkasan Penyewaan")
 m1, m2, m3 = st.columns(3)
 if len(df_day_filtered) > 0:
     total = f"{int(df_day_filtered['cnt'].sum()):,}"
     avg = f"{int(df_day_filtered['cnt'].mean()):,}"
     top_day = df_day_filtered.loc[df_day_filtered['cnt'].idxmax(), 'dteday'].strftime('%d-%m-%Y')
     
-    m1.markdown(f"<div class='summary-text'>📦 Total Penyewaan: <span style='color:#1f77b4'>{total}</span></div>", unsafe_allow_html=True)
-    m2.markdown(f"<div class='summary-text'>📈 Rata-rata Harian: <span style='color:#ff7f0e'>{avg}</span></div>", unsafe_allow_html=True)
-    m3.markdown(f"<div class='summary-text'>🏆 Hari Teramai: <span style='color:#2ca02c'>{top_day}</span></div>", unsafe_allow_html=True)
+    m1.markdown(f"<div class='summary-text'>Total Penyewaan: <span style='color:#1f77b4'>{total}</span></div>", unsafe_allow_html=True)
+    m2.markdown(f"<div class='summary-text'>Rata-rata Harian: <span style='color:#ff7f0e'>{avg}</span></div>", unsafe_allow_html=True)
+    m3.markdown(f"<div class='summary-text'>Hari Teramai: <span style='color:#2ca02c'>{top_day}</span></div>", unsafe_allow_html=True)
 else:
-    m1.markdown("<div class='summary-text'>📦 Total Penyewaan: 0</div>", unsafe_allow_html=True)
-    m2.markdown("<div class='summary-text'>📈 Rata-rata Harian: 0</div>", unsafe_allow_html=True)
-    m3.markdown("<div class='summary-text'>🏆 Hari Teramai: -</div>", unsafe_allow_html=True)
+    m1.markdown("<div class='summary-text'>Total Penyewaan: 0</div>", unsafe_allow_html=True)
+    m2.markdown("<div class='summary-text'>Rata-rata Harian: 0</div>", unsafe_allow_html=True)
+    m3.markdown("<div class='summary-text'>Hari Teramai: -</div>", unsafe_allow_html=True)
 
 st.divider()
 
 # ---------- TABS ----------
 tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
-    "🌦️ Cuaca","⏰ Pola Jam","🔥 Heatmap","🍂 Musim","🔎 Clustering","📈 Tren Tahunan","🔮 Prediksi"
+    "Cuaca","Pola Jam","Heatmap","Musim","Clustering","Tren Tahunan","Prediksi"
 ])
 
 # ---------- TAB 1: CUACA ----------
@@ -68,7 +68,7 @@ with tab1:
 
 # ---------- TAB 2: POLA JAM ----------
 with tab2:
-    st.header("⏰ Pola Penyewaan per Jam")
+    st.header("Pola Penyewaan per Jam")
     hourly = df_hour_filtered.groupby('hr')['cnt'].mean().reset_index()
     fig_hour = px.line(hourly, x='hr', y='cnt', markers=True, labels={"cnt":"Rata-rata Penyewaan","hr":"Jam"},
                        hover_data={'cnt':True,'hr':True})
@@ -77,7 +77,7 @@ with tab2:
 
 # ---------- TAB 3: HEATMAP ----------
 with tab3:
-    st.header("🔥 Heatmap Jam vs Hari")
+    st.header("Heatmap Jam vs Hari")
     df_hour_filtered['weekday'] = df_hour_filtered['dteday'].dt.day_name()
     heatmap_data = df_hour_filtered.groupby(['weekday','hr'])['cnt'].mean().reset_index()
     heatmap_pivot = heatmap_data.pivot(index='weekday', columns='hr', values='cnt')
@@ -89,7 +89,7 @@ with tab3:
 
 # ---------- TAB 4: MUSIM ----------
 with tab4:
-    st.header("🍂 Rata-rata Penyewaan per Musim")
+    st.header("Rata-rata Penyewaan per Musim")
     season_labels = {1:"🌸 Spring",2:"☀️ Summer",3:"🍂 Fall",4:"❄️ Winter"}
     df_day_filtered["season_label"] = df_day_filtered["season"].map(season_labels)
     season_group = df_day_filtered.groupby("season_label")["cnt"].mean().reset_index()
@@ -119,7 +119,7 @@ with tab5:
 
 # ---------- TAB 6: TREN TAHUNAN ----------
 with tab6:
-    st.header("📈 Tren Penyewaan Tahunan")
+    st.header("Tren Penyewaan Tahunan")
     year_group = df_day.groupby('yr')['cnt'].mean().reset_index()
     year_group['yr'] = year_group['yr'].map({0:2011,1:2012})
     fig_trend = px.line(year_group, x='yr', y='cnt', markers=True,
@@ -129,7 +129,7 @@ with tab6:
 
 # ---------- TAB 7: PREDIKSI INTERAKTIF ----------
 with tab7:
-    st.header("🔮 Prediksi Penyewaan Harian (Linear Regression)")
+    st.header("Prediksi Penyewaan Harian (Linear Regression)")
     future_days = st.slider("Jumlah Hari Prediksi ke Depan", 7, 60, 30)
     df_pred = df_day_filtered.sort_values('dteday').reset_index()
     df_pred['day_number'] = np.arange(len(df_pred))
@@ -147,3 +147,4 @@ with tab7:
                        hover_data={'cnt':True,'dteday':True,'type':True})
     fig_pred.update_layout(title=f"Prediksi {future_days} Hari Kedepan", template="plotly_white")
     st.plotly_chart(fig_pred, use_container_width=True)
+
