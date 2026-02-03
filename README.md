@@ -89,6 +89,7 @@ Prediksi: Prediksi penyewaan 30 hari ke depan menggunakan Linear Regression
 - Bike_Sharing_Analysis_IF2.ipynb: Notebook untuk eksplorasi data dan clustering
 - day.csv & hour.csv: Dataset yang dipakai untuk analisis
 - requirements.txt: File berisi daftar library Python (streamlit, pandas, numpy, plotly, scikit-learn, dll.)
+- README.md: Deskripsi proyek dan panduan
 - dashboard.png: Screenshot dashboard untuk README
 
 ---
@@ -96,3 +97,4 @@ Prediksi: Prediksi penyewaan 30 hari ke depan menggunakan Linear Regression
 ## Video Demo
 
 🔗 
+
