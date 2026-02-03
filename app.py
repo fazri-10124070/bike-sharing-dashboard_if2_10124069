@@ -119,11 +119,10 @@ with tab5:
 # ---------- TAB 6: TREN TAHUNAN ----------
 with tab6:
     st.header("📈 Tren Penyewaan Tahunan")
-    year_group = df_day.groupby('yr')['cnt'].mean()
-    year_group.index = [2011, 2012]
-    fig_trend = px.line(x=year_group.index, y=year_group.values, markers=True,
-                        labels={"x":"Tahun","y":"Rata-rata Penyewaan"},
-                        hover_data={'y':True,'x':True})
+    year_group = df_day.groupby('yr')['cnt'].mean().reset_index()
+    year_group['yr'] = year_group['yr'].map({0:2011,1:2012})
+    fig_trend = px.line(year_group, x='yr', y='cnt', markers=True,
+                        labels={"yr":"Tahun","cnt":"Rata-rata Penyewaan"})
     fig_trend.update_layout(title="Tren Penyewaan Tahunan", template="plotly_white")
     st.plotly_chart(fig_trend, use_container_width=True)
 
