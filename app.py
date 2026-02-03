@@ -127,25 +127,31 @@ with tab6:
     fig_trend.update_layout(title="Tren Penyewaan Tahunan", template="plotly_white")
     st.plotly_chart(fig_trend, use_container_width=True)
 
-# ---------- TAB 7: PREDIKSI INTERAKTIF ----------
+# ---------- TAB 7: PREDIKSI 30 HARI ----------
 with tab7:
-    st.header("Prediksi Penyewaan Harian (Linear Regression)")
-    future_days = st.slider("Jumlah Hari Prediksi ke Depan", 7, 60, 30)
+    st.header("🔮 Prediksi Penyewaan Harian (Linear Regression - 30 Hari)")
+    
+    # Prediksi 30 hari ke depan
+    future_days = 30
     df_pred = df_day_filtered.sort_values('dteday').reset_index()
     df_pred['day_number'] = np.arange(len(df_pred))
+    
     X = df_pred[['day_number']]
     y = df_pred['cnt']
+    
     model = LinearRegression()
     model.fit(X, y)
+    
     future_X = np.arange(len(df_pred), len(df_pred)+future_days).reshape(-1,1)
     y_pred = model.predict(future_X)
+    
     pred_dates = pd.date_range(df_pred['dteday'].max() + pd.Timedelta(days=1), periods=future_days)
     df_future = pd.DataFrame({'dteday':pred_dates, 'predicted_cnt':y_pred})
+    
     df_plot = pd.concat([df_pred[['dteday','cnt']], df_future.rename(columns={'predicted_cnt':'cnt'})], ignore_index=True)
     df_plot['type'] = ['Actual']*len(df_pred) + ['Predicted']*future_days
+    
     fig_pred = px.line(df_plot, x='dteday', y='cnt', color='type', markers=True,
                        hover_data={'cnt':True,'dteday':True,'type':True})
-    fig_pred.update_layout(title=f"Prediksi {future_days} Hari Kedepan", template="plotly_white")
+    fig_pred.update_layout(title=f"Prediksi 30 Hari Kedepan", template="plotly_white")
     st.plotly_chart(fig_pred, use_container_width=True)
-
-
