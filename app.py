@@ -4,34 +4,35 @@ import plotly.express as px
 from sklearn.linear_model import LinearRegression
 import numpy as np
 
-# ---------- PAGE CONFIG ----------
+# Page configuration
 st.set_page_config(page_title="Bike Sharing Dashboard", layout="wide")
 
-# ---------- THEME & STYLE ----------
+# Theme & basic styling
 st.markdown("""
 <style>
 body { background-color: #f4f6f8; }
 h1, h2, h3 { color: #1f2937; }
 .block-container { padding-top:2rem; }
-.summary-text { font-size: 32px; font-weight: bold; }
+.summary-text { font-size: 32px; font-weight: bold; margin-bottom: 1rem; }
 </style>
 """, unsafe_allow_html=True)
 
+# Title and caption
 st.title("Bike Sharing Dashboard")
 st.caption("Dashboard interaktif untuk menganalisis pola penyewaan sepeda, tren harian, musiman, dan prediksi permintaan.")
 
-# ---------- LOAD DATA ----------
+# Load data
 df_day = pd.read_csv('day.csv')
 df_hour = pd.read_csv('hour.csv')
 df_day['dteday'] = pd.to_datetime(df_day['dteday'])
 df_hour['dteday'] = pd.to_datetime(df_hour['dteday'])
 
-# ---------- FILTER TAHUN ----------
+# Filter data by selected year
 year_option = st.selectbox("Pilih Tahun", [2011, 2012])
 df_day_filtered = df_day[df_day['yr'] == (year_option-2011)]
 df_hour_filtered = df_hour[df_hour['yr'] == (year_option-2011)]
 
-# ---------- RINGKASAN PENYEWAAN BESAR & ANGGKA BERWARNA ----------
+# Ringkasan penyewaan dengan angka berwarna
 st.subheader("Ringkasan Penyewaan")
 m1, m2, m3 = st.columns(3)
 if len(df_day_filtered) > 0:
@@ -49,12 +50,12 @@ else:
 
 st.divider()
 
-# ---------- TABS ----------
+# Create tabs
 tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "Cuaca","Pola Jam","Heatmap","Musim","Clustering","Tren Tahunan","Prediksi"
 ])
 
-# ---------- TAB 1: CUACA ----------
+# Tab 1: Cuaca
 with tab1:
     st.header("Penyewaan Berdasarkan Cuaca")
     weather_labels = {1:"☀️ Cerah",2:"🌫️ Berkabut",3:"🌧️ Hujan Ringan",4:"⛈️ Cuaca Parah"}
@@ -66,7 +67,7 @@ with tab1:
     fig_weather.update_layout(title="Rata-rata Penyewaan per Cuaca", template="plotly_white")
     st.plotly_chart(fig_weather, use_container_width=True)
 
-# ---------- TAB 2: POLA JAM ----------
+# Tab 2: Pola jam
 with tab2:
     st.header("Pola Penyewaan per Jam")
     hourly = df_hour_filtered.groupby('hr')['cnt'].mean().reset_index()
@@ -75,7 +76,7 @@ with tab2:
     fig_hour.update_layout(title="Rata-rata Penyewaan per Jam", template="plotly_white")
     st.plotly_chart(fig_hour, use_container_width=True)
 
-# ---------- TAB 3: HEATMAP ----------
+# Tab 3: Heatmap
 with tab3:
     st.header("Heatmap Jam vs Hari")
     df_hour_filtered['weekday'] = df_hour_filtered['dteday'].dt.day_name()
@@ -87,7 +88,7 @@ with tab3:
     fig_heat.update_layout(title="Heatmap Jam vs Hari", template="plotly_white")
     st.plotly_chart(fig_heat, use_container_width=True)
 
-# ---------- TAB 4: MUSIM ----------
+# Tab 4: Musim
 with tab4:
     st.header("Rata-rata Penyewaan per Musim")
     season_labels = {1:"🌸 Spring",2:"☀️ Summer",3:"🍂 Fall",4:"❄️ Winter"}
@@ -99,7 +100,7 @@ with tab4:
     fig_season.update_layout(title="Rata-rata Penyewaan per Musim", template="plotly_white")
     st.plotly_chart(fig_season, use_container_width=True)
 
-# ---------- TAB 5: CLUSTERING ----------
+# Tab 5: Clustering
 with tab5:
     st.header("Scatter Clustering Sepi–Normal–Ramai")
     q1 = df_day_filtered['cnt'].quantile(0.33)
@@ -117,7 +118,7 @@ with tab5:
     fig_cluster.update_layout(title="Cluster Penyewaan", template="plotly_white")
     st.plotly_chart(fig_cluster, use_container_width=True)
 
-# ---------- TAB 6: TREN TAHUNAN ----------
+# Tab 6: Tren tahunan
 with tab6:
     st.header("Tren Penyewaan Tahunan")
     year_group = df_day.groupby('yr')['cnt'].mean().reset_index()
@@ -127,30 +128,32 @@ with tab6:
     fig_trend.update_layout(title="Tren Penyewaan Tahunan", template="plotly_white")
     st.plotly_chart(fig_trend, use_container_width=True)
 
-# ---------- TAB 7: PREDIKSI 30 HARI ----------
+# Tab 7: Prediksi 30 hari ke depan
 with tab7:
     st.header("Prediksi Penyewaan Harian (30 Hari)")
     
-    # Prediksi 30 hari ke depan
+    # Persiapan data prediksi
     future_days = 30
     df_pred = df_day_filtered.sort_values('dteday').reset_index()
     df_pred['day_number'] = np.arange(len(df_pred))
     
+    # Model Linear Regression
     X = df_pred[['day_number']]
     y = df_pred['cnt']
-    
     model = LinearRegression()
     model.fit(X, y)
     
+    # Prediksi 30 hari ke depan
     future_X = np.arange(len(df_pred), len(df_pred)+future_days).reshape(-1,1)
     y_pred = model.predict(future_X)
-    
     pred_dates = pd.date_range(df_pred['dteday'].max() + pd.Timedelta(days=1), periods=future_days)
     df_future = pd.DataFrame({'dteday':pred_dates, 'predicted_cnt':y_pred})
     
+    # Gabungkan data aktual dan prediksi
     df_plot = pd.concat([df_pred[['dteday','cnt']], df_future.rename(columns={'predicted_cnt':'cnt'})], ignore_index=True)
     df_plot['type'] = ['Actual']*len(df_pred) + ['Predicted']*future_days
     
+    # Plot prediksi
     fig_pred = px.line(df_plot, x='dteday', y='cnt', color='type', markers=True,
                        hover_data={'cnt':True,'dteday':True,'type':True})
     fig_pred.update_layout(title=f"Prediksi 30 Hari Kedepan", template="plotly_white")
