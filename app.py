@@ -5,7 +5,7 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 
 # ---------- PAGE CONFIG ----------
-st.set_page_config(page_title="Bike Sharing Dashboard - Professional", layout="wide")
+st.set_page_config(page_title="Bike Sharing Dashboard", layout="wide")
 
 # ---------- THEME & STYLE ----------
 st.markdown("""
@@ -17,8 +17,8 @@ h1, h2, h3 { color: #1f2937; }
 </style>
 """, unsafe_allow_html=True)
 
-st.title("🚲 Bike Sharing Dashboard - Professional Style")
-st.caption("Dashboard interaktif, data mining, prediksi, dan export siap pakai")
+st.title("🚲 Bike Sharing Dashboard")
+st.caption("Dashboard interaktif, data mining, prediksi, CSV download, siap Streamlit Cloud")
 
 # ---------- LOAD DATA ----------
 df_day = pd.read_csv('day.csv')
@@ -97,7 +97,6 @@ with tab1:
         fig_weather.update_layout(title="Rata-rata Penyewaan per Cuaca", template="plotly_white")
         st.plotly_chart(fig_weather, use_container_width=True)
         st.download_button("📥 Download CSV", weather_group.to_csv(index=False).encode('utf-8'), "weather_data.csv","text/csv")
-        st.download_button("📥 Download Chart PNG", fig_weather.to_image(format="png", engine="kaleido"), "weather_chart.png")
 
 # ---------- TAB 2: POLA JAM ----------
 with tab2:
@@ -108,7 +107,6 @@ with tab2:
         fig_hour.update_layout(title=f"Pola Jam - Cluster: {selected_cluster}", template="plotly_white")
         st.plotly_chart(fig_hour, use_container_width=True)
         st.download_button("📥 Download CSV", hourly.to_csv(index=False).encode('utf-8'), "hourly_data.csv","text/csv")
-        st.download_button("📥 Download Chart PNG", fig_hour.to_image(format="png", engine="kaleido"), "hourly_chart.png")
 
 # ---------- TAB 3: HEATMAP ----------
 with tab3:
@@ -123,7 +121,6 @@ with tab3:
         fig_heat.update_layout(title=f"Heatmap Jam vs Hari - Cluster: {selected_cluster}", template="plotly_white")
         st.plotly_chart(fig_heat, use_container_width=True)
         st.download_button("📥 Download CSV", heatmap_data.to_csv(index=False).encode('utf-8'), "heatmap_data.csv","text/csv")
-        st.download_button("📥 Download Heatmap PNG", fig_heat.to_image(format="png", engine="kaleido"), "heatmap.png")
 
 # ---------- TAB 4: MUSIM ----------
 with tab4:
@@ -134,7 +131,6 @@ with tab4:
         fig_season.update_layout(title="Rata-rata Penyewaan per Musim", template="plotly_white")
         st.plotly_chart(fig_season, use_container_width=True)
         st.download_button("📥 Download CSV", season_group.to_csv(index=False).encode('utf-8'), "season_data.csv","text/csv")
-        st.download_button("📥 Download Chart PNG", fig_season.to_image(format="png", engine="kaleido"), "season_chart.png")
 
 # ---------- TAB 5: CLUSTERING ----------
 with tab5:
@@ -145,7 +141,6 @@ with tab5:
         fig_cluster.update_layout(title="Cluster per Musim", template="plotly_white")
         st.plotly_chart(fig_cluster, use_container_width=True)
         st.download_button("📥 Download CSV", df_day_filtered.to_csv(index=False).encode('utf-8'), "cluster_data.csv","text/csv")
-        st.download_button("📥 Download Scatter PNG", fig_cluster.to_image(format="png", engine="kaleido"), "cluster_scatter.png")
 
 # ---------- TAB 6: TREN TAHUNAN ----------
 with tab6:
@@ -156,7 +151,6 @@ with tab6:
     fig_trend.update_layout(title="Tren Penyewaan Tahunan", template="plotly_white")
     st.plotly_chart(fig_trend, use_container_width=True)
     st.download_button("📥 Download CSV", pd.DataFrame({'Tahun':[2011,2012],'Rata-rata Penyewaan':year_group.values}).to_csv(index=False).encode('utf-8'), "yearly_trend.csv","text/csv")
-    st.download_button("📥 Download Chart PNG", fig_trend.to_image(format="png", engine="kaleido"), "yearly_trend.png")
 
 # ---------- TAB 7: PREDIKSI ----------
 with tab7:
@@ -179,4 +173,3 @@ with tab7:
         fig_pred.update_layout(title="Prediksi 30 Hari Kedepan", template="plotly_white")
         st.plotly_chart(fig_pred, use_container_width=True)
         st.download_button("📥 Download CSV Prediksi", df_plot.to_csv(index=False).encode('utf-8'), "prediction_data.csv","text/csv")
-        st.download_button("📥 Download Chart PNG", fig_pred.to_image(format="png", engine="kaleido"), "prediction_chart.png")
