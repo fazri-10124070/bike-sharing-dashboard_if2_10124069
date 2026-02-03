@@ -5,7 +5,15 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 
 # ---------- PAGE CONFIG ----------
-st.set_page_config(page_title="Bike Sharing Dashboard", layout="wide")
+st.set_page_config(
+    page_title="Bike Sharing Dashboard",
+    layout="wide",
+    menu_items={
+        'Get Help': None,
+        'Report a bug': None,
+        'About': None
+    }
+)
 
 # ---------- THEME & STYLE ----------
 st.markdown("""
@@ -155,5 +163,3 @@ with tab7:
                        hover_data={'cnt':True,'dteday':True,'type':True})
     fig_pred.update_layout(title=f"Prediksi 30 Hari Kedepan", template="plotly_white")
     st.plotly_chart(fig_pred, use_container_width=True)
-
-
