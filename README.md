@@ -1,4 +1,5 @@
 # 🚲 Bike Sharing Data Analysis & Interactive Dashboard
+![Dashboard Preview](dashboard.png)
 
 Proyek ini merupakan analisis data Bike Sharing untuk memahami pola penyewaan sepeda berdasarkan faktor cuaca, musim, waktu, dan tren tahunan.  
 Hasil analisis disajikan dalam bentuk **dashboard interaktif menggunakan Streamlit**.
@@ -76,3 +77,4 @@ Dashboard ini memungkinkan pengguna:
 ---
 
 ## 📁 Struktur Repository
+
