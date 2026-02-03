@@ -5,15 +5,7 @@ from sklearn.linear_model import LinearRegression
 import numpy as np
 
 # ---------- PAGE CONFIG ----------
-st.set_page_config(
-    page_title="Bike Sharing Dashboard",
-    layout="wide",
-    menu_items={
-        'Get Help': None,
-        'Report a bug': None,
-        'About': None
-    }
-)
+st.set_page_config(page_title="Bike Sharing Dashboard", layout="wide")
 
 # ---------- THEME & STYLE ----------
 st.markdown("""
