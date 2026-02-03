@@ -1,28 +1,35 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 
-st.title("🚲 Bike Sharing Dashboard")
+st.set_page_config(page_title="Bike Sharing Dashboard", layout="wide")
+
+st.title("🚲 Bike Sharing Data Dashboard")
+st.write("Dashboard interaktif untuk menganalisis pola penyewaan sepeda berdasarkan cuaca, musim, jam, dan tren tahunan.")
 
 # Load data
 df_day = pd.read_csv('day.csv')
 df_hour = pd.read_csv('hour.csv')
 
-# Ubah tanggal
 df_day['dteday'] = pd.to_datetime(df_day['dteday'])
 df_hour['dteday'] = pd.to_datetime(df_hour['dteday'])
 
-# Sidebar filter
-st.sidebar.header("Filter Data")
-year = st.sidebar.selectbox("Pilih Tahun", df_day['yr'].unique())
+# =========================
+# SIDEBAR
+# =========================
+st.sidebar.header("Filter")
 
-df_day = df_day[df_day['yr'] == year]
-df_hour = df_hour[df_hour['yr'] == year]
+year_option = st.sidebar.selectbox(
+    "Pilih Tahun",
+    options=[2011, 2012]
+)
+
+df_day = df_day[df_day['yr'] == (year_option-2011)]
+df_hour = df_hour[df_hour['yr'] == (year_option-2011)]
 
 # =========================
-# 1. Pengaruh Cuaca
+# CUACA
 # =========================
-st.header("Pengaruh Cuaca terhadap Penyewaan")
+st.header("🌦️ Pengaruh Cuaca")
 
 weather_labels = {
     1: "Cerah",
@@ -30,24 +37,27 @@ weather_labels = {
     3: "Hujan Ringan/Salju",
     4: "Cuaca Parah"
 }
-
 df_day["weather_label"] = df_day["weathersit"].map(weather_labels)
-weather_group = df_day.groupby("weather_label")["cnt"].mean()
 
+weather_group = df_day.groupby("weather_label")["cnt"].mean()
 st.line_chart(weather_group)
 
+st.caption("Cuaca cerah menghasilkan jumlah penyewaan tertinggi.")
+
 # =========================
-# 2. Pola Per Jam
+# JAM
 # =========================
-st.header("Pola Penyewaan Per Jam")
+st.header("⏰ Pola Penyewaan Per Jam")
 
 hourly = df_hour.groupby('hr')['cnt'].mean()
 st.line_chart(hourly)
 
+st.caption("Puncak terjadi pada jam komuter dan siang hari saat weekend.")
+
 # =========================
-# 3. Musim
+# MUSIM
 # =========================
-st.header("Penyewaan Berdasarkan Musim")
+st.header("🍂 Penyewaan Berdasarkan Musim")
 
 season_labels = {
     1: "Spring",
@@ -55,16 +65,19 @@ season_labels = {
     3: "Fall",
     4: "Winter"
 }
-
 df_day["season_label"] = df_day["season"].map(season_labels)
-season_group = df_day.groupby("season_label")["cnt"].mean()
 
+season_group = df_day.groupby("season_label")["cnt"].mean()
 st.bar_chart(season_group)
 
-# =========================
-# 4. Tren Tahunan
-# =========================
-st.header("Tren Tahunan")
+st.caption("Fall dan Summer memiliki penyewaan tertinggi.")
 
-year_group = df_day.groupby("yr")["cnt"].mean()
+# =========================
+# TREN
+# =========================
+st.header("📈 Tren Penyewaan Tahunan")
+
+year_group = pd.read_csv('day.csv').groupby('yr')['cnt'].mean()
 st.line_chart(year_group)
+
+st.caption("Terlihat peningkatan signifikan dari 2011 ke 2012.")
