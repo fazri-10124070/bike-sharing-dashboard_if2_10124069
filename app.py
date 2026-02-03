@@ -101,7 +101,7 @@ with tab4:
 
 # ---------- TAB 5: CLUSTERING ----------
 with tab5:
-    st.header("🔎 Scatter Clustering Sepi–Normal–Ramai")
+    st.header("Scatter Clustering Sepi–Normal–Ramai")
     q1 = df_day_filtered['cnt'].quantile(0.33)
     q2 = df_day_filtered['cnt'].quantile(0.66)
     def cluster_label(cnt):
@@ -155,4 +155,5 @@ with tab7:
                        hover_data={'cnt':True,'dteday':True,'type':True})
     fig_pred.update_layout(title=f"Prediksi 30 Hari Kedepan", template="plotly_white")
     st.plotly_chart(fig_pred, use_container_width=True)
+
 
