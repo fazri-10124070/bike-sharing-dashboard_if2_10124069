@@ -14,9 +14,6 @@ body { background-color: #f4f6f8; }
 h1, h2, h3 { color: #1f2937; }
 .block-container { padding-top:2rem; }
 .summary-text { font-size: 32px; font-weight: bold; }
-.summary-total { color:#1f77b4; }
-.summary-avg { color:#ff7f0e; }
-.summary-top { color:#2ca02c; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -34,17 +31,21 @@ year_option = st.selectbox("📅 Pilih Tahun", [2011, 2012])
 df_day_filtered = df_day[df_day['yr'] == (year_option-2011)]
 df_hour_filtered = df_hour[df_hour['yr'] == (year_option-2011)]
 
-# ---------- RINGKASAN PENYEWAAN BESAR & BERWARNA ----------
+# ---------- RINGKASAN PENYEWAAN BESAR & ANGGKA BERWARNA ----------
 st.subheader("📌 Ringkasan Penyewaan")
 m1, m2, m3 = st.columns(3)
 if len(df_day_filtered) > 0:
-    m1.markdown(f"<div class='summary-text summary-total'>📦 Total Penyewaan: {int(df_day_filtered['cnt'].sum()):,}</div>", unsafe_allow_html=True)
-    m2.markdown(f"<div class='summary-text summary-avg'>📈 Rata-rata Harian: {int(df_day_filtered['cnt'].mean()):,}</div>", unsafe_allow_html=True)
-    m3.markdown(f"<div class='summary-text summary-top'>🏆 Hari Teramai: {df_day_filtered.loc[df_day_filtered['cnt'].idxmax(), 'dteday'].strftime('%d-%m-%Y')}</div>", unsafe_allow_html=True)
+    total = f"{int(df_day_filtered['cnt'].sum()):,}"
+    avg = f"{int(df_day_filtered['cnt'].mean()):,}"
+    top_day = df_day_filtered.loc[df_day_filtered['cnt'].idxmax(), 'dteday'].strftime('%d-%m-%Y')
+    
+    m1.markdown(f"<div class='summary-text'>📦 Total Penyewaan: <span style='color:#1f77b4'>{total}</span></div>", unsafe_allow_html=True)
+    m2.markdown(f"<div class='summary-text'>📈 Rata-rata Harian: <span style='color:#ff7f0e'>{avg}</span></div>", unsafe_allow_html=True)
+    m3.markdown(f"<div class='summary-text'>🏆 Hari Teramai: <span style='color:#2ca02c'>{top_day}</span></div>", unsafe_allow_html=True)
 else:
-    m1.markdown("<div class='summary-text summary-total'>📦 Total Penyewaan: 0</div>", unsafe_allow_html=True)
-    m2.markdown("<div class='summary-text summary-avg'>📈 Rata-rata Harian: 0</div>", unsafe_allow_html=True)
-    m3.markdown("<div class='summary-text summary-top'>🏆 Hari Teramai: -</div>", unsafe_allow_html=True)
+    m1.markdown("<div class='summary-text'>📦 Total Penyewaan: 0</div>", unsafe_allow_html=True)
+    m2.markdown("<div class='summary-text'>📈 Rata-rata Harian: 0</div>", unsafe_allow_html=True)
+    m3.markdown("<div class='summary-text'>🏆 Hari Teramai: -</div>", unsafe_allow_html=True)
 
 st.divider()
 
