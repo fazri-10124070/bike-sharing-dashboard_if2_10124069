@@ -78,3 +78,8 @@ Dashboard ini memungkinkan pengguna:
 
 ## 📁 Struktur Repository
 
+---
+
+## ▶️ Video Demo
+
+Link YouTube demo penggunaan dashboard: *(isi nanti saat sudah upload video)*
