@@ -69,8 +69,8 @@ Dashboard ini memungkinkan pengguna:
   - Musim: Rata-rata penyewaan per musim
   - Clustering: Klasifikasi hari menjadi Sepi – Normal – Ramai
   - Tren Tahunan: Tren penyewaan dari tahun 2011 hingga 2012
+  - Prediksi: Prediksi penyewaan 30 hari ke depan menggunakan Linear Regression
 
-Prediksi: Prediksi penyewaan 30 hari ke depan menggunakan Linear Regression
 ---
 
 ## Teknologi yang Digunakan
@@ -97,4 +97,5 @@ Prediksi: Prediksi penyewaan 30 hari ke depan menggunakan Linear Regression
 ## Video Demo
 
 🔗 
+
 
