@@ -57,7 +57,7 @@ Notebook analisis lengkap tersedia pada file ".ipynb" di repository ini.
 
 Dashboard dapat diakses melalui link berikut:
 
-🔗 https://bike-sharing-dashboardif210124069-aacyqyupeptfhia6zwryxe.streamlit.app/
+https://bike-sharing-dashboardif210124069-aacyqyupeptfhia6zwryxe.streamlit.app/
 
 Dashboard ini memungkinkan pengguna:
 - Filter Tahun: Memilih data berdasarkan tahun, yaitu 2011 atau 2012
@@ -95,7 +95,4 @@ Dashboard ini memungkinkan pengguna:
 ---
 
 ## Video Demo
-
-🔗 
-
 
