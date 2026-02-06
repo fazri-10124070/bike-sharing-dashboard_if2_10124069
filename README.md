@@ -8,13 +8,13 @@ Hasil analisis ditampilkan dalam bentuk dashboard interaktif menggunakan Streaml
 
 ## Anggota Kelompok IF2
 
-| NIM | Nama |
-|-----|------|
-| 10123318 | Jorge Fielnero Sauman | | |
-| 10124051 | Raden Rama Feryl Alfaro | | |
-| 10124064 | M. Rifqi Afriza Fasha | | |
-| 10124069 | Deni Solehudin | | |
-| 10124070 | Fazri Hariri | | |
+| NIM | Nama | Informasi Pekerjaan |
+|-----|------|------|
+| 10123318 | Jorge Fielnero Sauman | | 
+| 10124051 | Raden Rama Feryl Alfaro | | 
+| 10124064 | M. Rifqi Afriza Fasha | | 
+| 10124069 | Deni Solehudin | | 
+| 10124070 | Fazri Hariri | | 
 
 ---
 
@@ -103,3 +103,4 @@ Dashboard ini menyediakan beberapa fitur, antara lain:
 ## Video Presentasi
 
 Video dapat diakses melalui link berikut:
+
