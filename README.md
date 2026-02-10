@@ -27,7 +27,7 @@ Data penyewaan sepeda dapat digunakan untuk memahami kebiasaan pengguna serta fa
 
 Berdasarkan latar belakang tersebut, analisis ini difokuskan untuk menjawab beberapa permasalahan berikut:
 1. Bagaimana pengaruh kondisi cuaca terhadap jumlah penyewaan sepeda?
-2.Pada jam berapa penyewaan sepeda paling tinggi, serta bagaimana perbedaannya antara hari kerja dan akhir pekan?
+2. Pada jam berapa penyewaan sepeda paling tinggi, serta bagaimana perbedaannya antara hari kerja dan akhir pekan?
 3. Musim apa yang memiliki jumlah penyewaan sepeda tertinggi?
 4. Faktor lingkungan apa yang paling memengaruhi jumlah penyewaan sepeda?
 5. Apakah terdapat tren peningkatan penggunaan sepeda dari tahun 2011 ke tahun 2012?
@@ -103,4 +103,5 @@ Dashboard ini menyediakan beberapa fitur, antara lain:
 ## Video Presentasi
 
 Video dapat diakses melalui link berikut:
+
 
