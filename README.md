@@ -135,7 +135,7 @@ Video dapat diakses melalui link berikut:
 - Bike_Sharing_Analysis_IF2.ipynb – Notebook analisis data dan clustering
 - day.csv dan hour.csv – Dataset yang digunakan
 - requirements.txt – Daftar library yang diperlukan
-- README.md – Dokumentasi proyek
+- README.md – Dokumentasi project
 - dashboard.png – Tampilan dashboard
 
 ---
