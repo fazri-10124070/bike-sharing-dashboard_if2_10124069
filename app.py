@@ -158,8 +158,8 @@ with tab5:
 
     fig_cluster = px.scatter(
         df_day_filtered,
-        x="dteday",
-        y="cnt",
+        x="Tanggal",
+        y="Jumlah Penyewaan",
         color="cluster",
         size="cnt",
         hover_data=["season_label", "weather_label"]
@@ -220,10 +220,11 @@ with tab7:
 
     fig_pred = px.line(
         df_plot,
-        x="dteday",
-        y="cnt",
+        x="Tanggal",
+        y="Jumlah Penyewaan",
         color="type",
         markers=True
     )
 
     st.plotly_chart(fig_pred, use_container_width=True)
+
