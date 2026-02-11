@@ -16,15 +16,17 @@ seperti clustering dan prediksi permintaan.
 | NIM | Nama | Informasi Pekerjaan |
 |-----|------|------|
 | 10123318 | Jorge Fielnero Sauman | Analisis Notebook | 
-| 10124051 | Raden Rama Feryl Alfaro | Membuat Dashboard Github Dan Membuat Desain Aplikasi | 
+| 10124051 | Raden Rama Feryl Alfaro | Membuat Dashboard Dan Repository Github, Membuat Desain Aplikasi | 
 | 10124064 | M. Rifqi Afriza Fasha | Membuat Fitur Tambahan Pada Aplikasi | 
 | 10124069 | Deni Solehudin | Analisis Notebook | 
 | 10124070 | Fazri Hariri | Membuat Fitur Tambahan Pada Aplikasi | 
 
-Catatan: Project ini dikerjakan secara berkelompok. Namun, proses implementasi teknis
-(pengembangan dashboard, pengelolaan repository GitHub, dan deployment) di awal
-dilakukan dengan menggunakan satu laptop dan satu akun GitHub, yaitu milik
-Fazri Hariri, untuk mempermudah koordinasi dan konsistensi pengerjaan.
+Catatan: Project ini dikerjakan secara berkelompok. Pada tahap awal, proses implementasi teknis
+(pengembangan dashboard, pengelolaan repository GitHub, dan deployment)
+dilakukan menggunakan satu laptop dan satu akun GitHub, yaitu milik Fazri Hariri,
+untuk mempermudah koordinasi dan konsistensi pengerjaan. 
+Pada tahap selanjutnya, anggota lain diundang (invite) ke repository GitHub
+untuk mendukung kolaborasi.
 
 ---
 
@@ -155,6 +157,7 @@ Video dapat diakses melalui link berikut:
 - dashboard.png – Tampilan dashboard
 
 ---
+
 
 
 
