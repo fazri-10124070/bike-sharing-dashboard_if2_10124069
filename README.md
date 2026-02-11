@@ -22,7 +22,7 @@ seperti clustering dan prediksi permintaan.
 | 10124070 | Fazri Hariri | Membuat Fitur Tambahan Pada Aplikasi | 
 
 Catatan: Project ini dikerjakan secara berkelompok. Namun, proses implementasi teknis
-(pengembangan dashboard, pengelolaan repository GitHub, dan deployment) awal
+(pengembangan dashboard, pengelolaan repository GitHub, dan deployment) di awal
 dilakukan dengan menggunakan satu laptop dan satu akun GitHub, yaitu milik
 Fazri Hariri, untuk mempermudah koordinasi dan konsistensi pengerjaan.
 
@@ -155,6 +155,7 @@ Video dapat diakses melalui link berikut:
 - dashboard.png – Tampilan dashboard
 
 ---
+
 
 
 
