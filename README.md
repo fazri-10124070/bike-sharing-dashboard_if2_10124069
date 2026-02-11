@@ -21,6 +21,11 @@ seperti clustering dan prediksi permintaan.
 | 10124069 | Deni Solehudin | Analisis Notebook | 
 | 10124070 | Fazri Hariri | Membuat Fitur Tambahan Pada Aplikasi | 
 
+Catatan: Project ini dikerjakan secara berkelompok. Namun, proses implementasi teknis
+(pengembangan dashboard, pengelolaan repository GitHub, dan deployment) awal
+dilakukan dengan menggunakan satu laptop dan satu akun GitHub, yaitu milik
+Fazri Hariri, untuk mempermudah koordinasi dan konsistensi pengerjaan.
+
 ---
 
 ## Dataset
@@ -65,7 +70,7 @@ Tahapan analisis data yang dilakukan meliputi:
 - Data wrangling, yang mencakup proses pengumpulan dan pembersihan data
 - Exploratory Data Analysis (EDA) untuk melihat pola awal pada data
 - Visualisasi data untuk mempermudah interpretasi hasil analisis
-- Penerapan algoritma K-Means Clustering untuk mengelompokkan hari berdasarkan tingkat penyewaan
+- Clustering berbasis quantile untuk mengelompokkan hari ke dalam kategori sepi, normal, dan ramai
 - Pembuatan dashboard interaktif menggunakan Streamlit
 
 Notebook analisis lengkap tersedia dalam file .ipynb pada repository ini.
@@ -150,5 +155,6 @@ Video dapat diakses melalui link berikut:
 - dashboard.png – Tampilan dashboard
 
 ---
+
 
 
