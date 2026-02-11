@@ -7,7 +7,7 @@ import numpy as np
 # Konfigurasi halaman
 st.set_page_config(page_title="Bike Sharing Dashboard", layout="wide")
 
-# Styling sederhana
+# Styling
 st.markdown("""
 <style>
 body { background-color: #f4f6f8; }
