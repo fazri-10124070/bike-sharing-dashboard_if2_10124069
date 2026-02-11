@@ -108,19 +108,19 @@ Dashboard ini menyediakan beberapa fitur, antara lain:
 
 1. Clone repository ini lalu buka terminal (Command Prompt/Git Bash) dan jalankan perintah:
 
-git clone "Clone repository yang sudah dicopy lalu paste disini"
+   git clone "Clone repository yang sudah dicopy lalu paste disini"
 
 2. Masuk ke direktori project:
 
-cd bike-sharing-dashboard_if2_10124069
+   cd bike-sharing-dashboard_if2_10124069
 
 3. Install dependency library yang dibutuhkan:
 
-pip install -r requirements.txt
+   pip install -r requirements.txt
 
 4. Jalankan Dashboard
 
-streamlit run app.py
+   streamlit run app.py
 
 ---
 
@@ -150,4 +150,5 @@ Video dapat diakses melalui link berikut:
 - dashboard.png – Tampilan dashboard
 
 ---
+
 
