@@ -1,8 +1,13 @@
-# Bike Sharing Data Analysis 
+# Bike Sharing Dashboard
 ![Dashboard Preview](dashboard.png)
 
-Proyek ini berisi analisis data Bike Sharing untuk melihat pola penyewaan sepeda berdasarkan kondisi cuaca, musim, waktu, dan tren tahunan.
-Hasil analisis ditampilkan dalam bentuk dashboard interaktif menggunakan Streamlit.
+Project ini bertujuan untuk menganalisis pola penyewaan sepeda menggunakan
+dataset Bike Sharing dengan memanfaatkan teknik analisis data dan visualisasi
+interaktif melalui dashboard berbasis Streamlit.
+
+Dashboard ini membantu memahami pengaruh faktor waktu, cuaca, dan musim
+terhadap jumlah penyewaan sepeda, serta menyediakan analisis lanjutan
+seperti clustering dan prediksi permintaan.
 
 ---
 
@@ -10,11 +15,20 @@ Hasil analisis ditampilkan dalam bentuk dashboard interaktif menggunakan Streaml
 
 | NIM | Nama | Informasi Pekerjaan |
 |-----|------|------|
-| 10123318 | Jorge Fielnero Sauman | | 
-| 10124051 | Raden Rama Feryl Alfaro | | 
-| 10124064 | M. Rifqi Afriza Fasha | | 
-| 10124069 | Deni Solehudin | | 
-| 10124070 | Fazri Hariri | | 
+| 10123318 | Jorge Fielnero Sauman | Analisis Notebook | 
+| 10124051 | Raden Rama Feryl Alfaro | Membuat Dashboard Github Dan Membuat Desain Aplikasi | 
+| 10124064 | M. Rifqi Afriza Fasha | Membuat Fitur Tambahan Pada Aplikasi | 
+| 10124069 | Deni Solehudin | Analisis Notebook | 
+| 10124070 | Fazri Hariri | Membuat Fitur Tambahan Pada Aplikasi | 
+
+---
+
+## Dataset
+Dataset yang digunakan merupakan dataset Bike Sharing yang terdiri dari:
+- day.csv : data agregasi harian
+- hour.csv : data agregasi per jam
+
+Dataset mencakup informasi cuaca, musim, hari kerja, dan jumlah penyewaan sepeda.
 
 ---
 
@@ -31,6 +45,16 @@ Berdasarkan latar belakang tersebut, analisis ini difokuskan untuk menjawab bebe
 3. Musim apa yang memiliki jumlah penyewaan sepeda tertinggi?
 4. Faktor lingkungan apa yang paling memengaruhi jumlah penyewaan sepeda?
 5. Apakah terdapat tren peningkatan penggunaan sepeda dari tahun 2011 ke tahun 2012?
+
+---
+
+## Analisis yang Dilakukan
+- Analisis penyewaan berdasarkan kondisi cuaca
+- Analisis pola penyewaan per jam
+- Analisis musiman penyewaan sepeda
+- Heatmap hubungan hari dan jam
+- Clustering hari berdasarkan tingkat penyewaan (sepi, normal, ramai)
+- Prediksi penyewaan sepeda menggunakan regresi linear
 
 ---
 
@@ -79,7 +103,23 @@ Dashboard ini menyediakan beberapa fitur, antara lain:
 
 ---
 
-## Teknologi yang Digunakan
+
+## Cara Menjalankan Dashboard Secara Lokal
+1. Clone repository ini
+2. Install dependency:
+   pip install -r requirements.txt
+3. Jalankan Dashboard:
+   streamlit run app.py
+
+---
+
+## Video Presentasi
+
+Video dapat diakses melalui link berikut:
+
+---
+
+## Tools yang Digunakan
 
 - Python
 - Pandas
@@ -99,9 +139,3 @@ Dashboard ini menyediakan beberapa fitur, antara lain:
 - dashboard.png – Tampilan dashboard
 
 ---
-
-## Video Presentasi
-
-Video dapat diakses melalui link berikut:
-
-
