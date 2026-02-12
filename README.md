@@ -1,5 +1,5 @@
 # Bike Sharing Dashboard
-![Dashboard Preview](dashboard.png)
+
 
 Project ini bertujuan untuk menganalisis pola penyewaan sepeda menggunakan
 dataset Bike Sharing dengan memanfaatkan teknik analisis data dan visualisasi
@@ -157,6 +157,7 @@ Video dapat diakses melalui link berikut:
 - dashboard.png – Tampilan dashboard
 
 ---
+
 
 
 
